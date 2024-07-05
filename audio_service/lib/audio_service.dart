@@ -212,6 +212,9 @@ class PlaybackState {
   /// The current playback speed where 1.0 means normal speed.
   final double speed;
 
+  /// The current playback speed stream.
+  final Stream<double>? speedStream;
+
   /// The time at which the playback position was last updated.
   final DateTime updateTime;
 
@@ -244,6 +247,7 @@ class PlaybackState {
     this.updatePosition = Duration.zero,
     this.bufferedPosition = Duration.zero,
     this.speed = 1.0,
+    Stream<double>? this.speedStream,
     DateTime? updateTime,
     this.errorCode,
     this.errorMessage,
@@ -290,6 +294,7 @@ class PlaybackState {
         updatePosition: updatePosition,
         bufferedPosition: bufferedPosition,
         speed: speed,
+        speedStream: speedStream,
         updateTime: updateTime,
         errorCode: errorCode,
         errorMessage: errorMessage,
@@ -314,6 +319,7 @@ class PlaybackState {
         updatePosition,
         bufferedPosition,
         speed,
+        speedStream,
         updateTime,
         errorCode,
         errorMessage,
@@ -337,6 +343,7 @@ class PlaybackState {
           updatePosition == other.updatePosition &&
           bufferedPosition == other.bufferedPosition &&
           speed == other.speed &&
+          speedStream == other.speedStream &&
           updateTime == other.updateTime &&
           errorCode == other.errorCode &&
           errorMessage == other.errorMessage &&
@@ -358,6 +365,7 @@ abstract class PlaybackStateCopyWith {
     Duration updatePosition,
     Duration bufferedPosition,
     double speed,
+    Stream<double>? speedStream,
     int? errorCode,
     String? errorMessage,
     AudioServiceRepeatMode repeatMode,
@@ -387,6 +395,7 @@ class _PlaybackStateCopyWith extends PlaybackStateCopyWith {
     Object? updatePosition = _fakeNull,
     Object? bufferedPosition = _fakeNull,
     Object? speed = _fakeNull,
+    Object? speedStream = _fakeNull,
     Object? errorCode = _fakeNull,
     Object? errorMessage = _fakeNull,
     Object? repeatMode = _fakeNull,
@@ -415,6 +424,7 @@ class _PlaybackStateCopyWith extends PlaybackStateCopyWith {
             ? value.bufferedPosition
             : bufferedPosition as Duration,
         speed: speed == _fakeNull ? value.speed : speed as double,
+        speedStream: speedStream == _fakeNull ? value.speedStream : speedStream as Stream<double>,
         errorCode: errorCode == _fakeNull ? value.errorCode : errorCode as int?,
         errorMessage: errorMessage == _fakeNull
             ? value.errorMessage
