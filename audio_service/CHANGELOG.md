@@ -1,3 +1,6 @@
+## 0.18.14
+* Add speed stream parameter to be able to change player speed and read latest (@wageeh-mankaryos)
+
 ## 0.18.13
 
 * Fix Android NPE in sendNotificationClicked and onConnected.
