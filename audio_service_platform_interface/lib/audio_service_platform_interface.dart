@@ -389,6 +389,9 @@ class PlaybackStateMessage {
   /// The current playback speed where 1.0 means normal speed.
   final double speed;
 
+  /// The current playback speed stream where 1.0 means normal speed.
+  final Stream<double>? speedStream;
+
   /// The time at which the playback position was last updated.
   final DateTime updateTime;
 
@@ -421,6 +424,7 @@ class PlaybackStateMessage {
     this.updatePosition = Duration.zero,
     this.bufferedPosition = Duration.zero,
     this.speed = 1.0,
+    Stream<double>? this.speedStream,
     DateTime? updateTime,
     this.errorCode,
     this.errorMessage,
@@ -446,6 +450,7 @@ class PlaybackStateMessage {
         bufferedPosition:
             Duration(microseconds: map['bufferedPosition'] as int),
         speed: map['speed'] as double,
+        speedStream: map['speedStream'] as Stream<double>?,
         updateTime:
             DateTime.fromMillisecondsSinceEpoch(map['updateTime'] as int),
         errorCode: map['errorCode'] as int?,
@@ -467,6 +472,7 @@ class PlaybackStateMessage {
         'updatePosition': updatePosition.inMilliseconds,
         'bufferedPosition': bufferedPosition.inMilliseconds,
         'speed': speed,
+        'speedStream': speedStream,
         'updateTime': updateTime.millisecondsSinceEpoch,
         'errorCode': errorCode,
         'errorMessage': errorMessage,
