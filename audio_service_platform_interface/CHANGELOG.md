@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Add speedStream (@wageeh-mankaryos)
+
 ## 0.1.1
 
 * Add customAction to MediaControlMessage (@defsub)
