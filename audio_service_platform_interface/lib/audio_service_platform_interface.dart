@@ -384,7 +384,7 @@ class PlaybackStateMessage {
   final Duration updatePosition;
 
   /// for getting stream of current position
-  final Stream<Duration>? currentPostionStream;
+  final Stream<Duration>? currentPositionStream;
 
   /// The buffered position.
   final Duration bufferedPosition;
