@@ -1,6 +1,6 @@
 ## 0.1.2
 
-* Add speedStream (@wageeh-mankaryos)
+* Add speed, buffered, position and total stream parameters to be able to change player speed and read latest (@wageeh-mankaryos)
 
 ## 0.1.1
 

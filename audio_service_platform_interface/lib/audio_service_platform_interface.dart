@@ -383,8 +383,17 @@ class PlaybackStateMessage {
   /// position as `position + (DateTime.now() - updateTime)`.
   final Duration updatePosition;
 
+  /// for getting stream of current position
+  final Stream<Duration> postionStream;
+
   /// The buffered position.
   final Duration bufferedPosition;
+
+  /// for getting stream of buffered position
+  final Stream<Duration> bufferedStream;
+
+  /// for getting stream of total durtation
+  final Stream<Duration> durationStream;
 
   /// The current playback speed where 1.0 means normal speed.
   final double speed;
