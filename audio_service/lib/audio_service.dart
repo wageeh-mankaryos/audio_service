@@ -207,16 +207,16 @@ class PlaybackState {
   final Duration updatePosition;
 
   /// for getting stream of current position
-  final Stream<Duration> postionStream;
+  final Stream<Duration>? currentPostionStream;
 
   /// The buffered position.
   final Duration bufferedPosition;
 
   /// for getting stream of buffered position
-  final Stream<Duration> bufferedStream;
+  final Stream<Duration>? bufferedStream;
 
   /// for getting stream of total durtation
-  final Stream<Duration> durationStream;
+  final Stream<Duration>? durationStream;
 
   /// The current playback speed where 1.0 means normal speed.
   final double speed;
@@ -254,7 +254,10 @@ class PlaybackState {
     this.androidCompactActionIndices,
     this.systemActions = const {},
     this.updatePosition = Duration.zero,
+    Stream<Duration>? this.positionStream,
     this.bufferedPosition = Duration.zero,
+    Stream<Duration>? this.bufferedStream,
+    Stream<Duration>? this.durationStream,
     this.speed = 1.0,
     Stream<double>? this.speedStream,
     DateTime? updateTime,
@@ -301,7 +304,10 @@ class PlaybackState {
             .map((action) => MediaActionMessage.values[action.index])
             .toSet(),
         updatePosition: updatePosition,
+        currentPostionStream: currentPostionStream,
         bufferedPosition: bufferedPosition,
+        bufferedStream: bufferedStream,
+        durationStream: durationStream,
         speed: speed,
         speedStream: speedStream,
         updateTime: updateTime,
@@ -326,7 +332,10 @@ class PlaybackState {
             : 0,
         Object.hashAll(systemActions),
         updatePosition,
+        currentPostionStream,
         bufferedPosition,
+        bufferedStream,
+        durationStream,
         speed,
         speedStream,
         updateTime,
@@ -350,7 +359,10 @@ class PlaybackState {
               androidCompactActionIndices, other.androidCompactActionIndices) &&
           setEquals(systemActions, other.systemActions) &&
           updatePosition == other.updatePosition &&
+          currentPostionStream == other.currentPostionStream &&
           bufferedPosition == other.bufferedPosition &&
+          bufferedStream == other.bufferedStream &&
+          durationStream == other.durationStream &&
           speed == other.speed &&
           speedStream == other.speedStream &&
           updateTime == other.updateTime &&
@@ -372,10 +384,10 @@ abstract class PlaybackStateCopyWith {
     List<int>? androidCompactActionIndices,
     Set<MediaAction> systemActions,
     Duration updatePosition,
-    Stream<Duration> postionStream,
+    Stream<Duration>? currentPostionStream,
     Duration bufferedPosition,
-    Stream<Duration> bufferedStream,
-    Stream<Duration> durationStream,
+    Stream<Duration>? bufferedStream,
+    Stream<Duration>? durationStream,
     double speed,
     Stream<double>? speedStream,
     int? errorCode,
